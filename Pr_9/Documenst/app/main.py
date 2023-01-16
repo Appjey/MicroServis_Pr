@@ -16,7 +16,7 @@ app = FastAPI()
 
 app.mount("/app/pages", StaticFiles(directory="app/pages"), name="pages")
 
-
+# GET /documents
 @app.get("/")
 async def hello_creen():
     return FileResponse('app/pages/index.html')

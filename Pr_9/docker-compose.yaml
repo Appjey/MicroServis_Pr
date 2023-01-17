@@ -8,6 +8,13 @@ services:
         dockerfile: Dockerfile
     ports:
         - "8000:80"
+  auth:
+    image: ms-auth
+    build:
+        context: ./node-auth-app
+        dockerfile: Dockerfile
+    ports:
+        - "4500:4500"
 
   templates:
     image: ms-templates
@@ -27,6 +34,7 @@ services:
       depends_on:
         - documents
         - templates
+        - auth
 
   grafana:
       image: grafana/grafana:9.1.2

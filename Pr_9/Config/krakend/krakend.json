@@ -8,7 +8,7 @@
             "extra_config": {
                 "auth/validator": {
                   "alg": "HS256",
-                  "jwk_url": "http://172.18.0.6:4500/symmetric.json",
+                  "jwk_url": "http://auth:4500/symmetric.json",
                   "cache": false,
                   "disable_jwk_security": true,
                   "operation_debug": true
@@ -116,7 +116,7 @@
             "alg": "HS256",
             "kid": "sim2",
             "keys_to_sign": ["access_token", "refresh_token"],
-            "jwk_url": "http://172.18.0.6:4500/symmetric.json",
+            "jwk_url": "http://auth:4500/symmetric.json",
             "disable_jwk_security": true
         }
       },
@@ -124,7 +124,7 @@
           "url_pattern": "/api/login",
           "method": "POST",
           "host": [
-              "http://172.18.0.6:4500"
+              "http://auth:4500"
           ]
       }]
   },
@@ -156,7 +156,7 @@
               "url_pattern": "/api/login",
               "method": "POST",
               "host": [
-                  "http://172.18.0.6:4500"
+                  "http://auth:4500"
               ]
           }]
       },
@@ -188,7 +188,7 @@
               "url_pattern": "/api/token",
               "method": "POST",
               "host": [
-                  "http://172.18.0.6:4500"
+                  "http://auth:4500"
               ]
           }]
       },
@@ -223,7 +223,7 @@
               "url_pattern": "/api/posts",
               "method": "GET",
               "host": [
-                  "http://172.18.0.6:4500"
+                  "http://auth:4500"
               ]
           }]
       },
@@ -256,7 +256,7 @@
 
               "auth/validator": {
                   "alg": "HS256",
-                  "jwk_url": "http://172.18.0.6:4500/symmetric.json",
+                  "jwk_url": "http://auth:4500/symmetric.json",
                   "cache": false,
                   "disable_jwk_security": true,
                   "operation_debug": true
@@ -269,46 +269,7 @@
               "url_pattern": "/api/validate_token",
               "method": "GET",
               "host": [
-                  "http://172.18.0.6:4500"
-              ]
-          }]
-      },
-
-      {
-          "endpoint": "/api/krakend/photos",
-          "method": "GET",
-          "extra_config": {
-
-              "auth/validator": {
-                  "alg": "HS256",
-                  "@comment": "Comments We can use either this or to access node auth symmetric //http://192.168.8.103:3030/symmetric.json",
-                  "jwk_url": "http://auth:4500/symmetric.json",
-                  "cache": false,
-                  "disable_jwk_security": true,
-                  "operation_debug": true
-              }
-          },
-          "concurrent_calls": 1,
-          "input_headers": ["*"],
-          "backend": [{
-              "url_pattern": "/photos",
-              "method": "GET",
-              "host": [
-                  "http://172.18.0.6:3030"
-              ]
-          }]
-      },
-
-      {
-          "endpoint": "/api/krakend/albums",
-          "method": "GET",
-          "concurrent_calls": 1,
-          "input_headers": ["*"],
-          "backend": [{
-              "url_pattern": "/albums",
-              "method": "GET",
-              "host": [
-                  "http://172.18.0.6:3030"
+                  "http://auth:4500"
               ]
           }]
       }
